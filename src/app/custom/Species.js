@@ -16,6 +16,6 @@ export default class Species extends EventEmitter {
     const currentSpeciesResolved = await currentSpeciesRaw.json();
     this.name = currentSpeciesResolved.name;
     this.classification = currentSpeciesResolved.classification;
-    this.emit("SPECIES_CREATED");
+    this.emit(this.constructor.events.SPECIES_CREATED);
   }
 }
