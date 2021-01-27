@@ -20,10 +20,12 @@ export default class StarWarsUniverse extends EventEmitter {
   }
 
   createSpecies() {
-    for (let i = 1; i < 23; i++) {
-      const species = new Species();
-      species.init(`https://swapi.booost.bg/api/species/${i}/`);
-      species.on("SPECIES_CREATED", () => this._onSpeciesCreated(species));
+    for (let i = 1; i < 37; i++) {
+      if (this._maxSpecies >= i) {
+        const species = new Species();
+        species.init(`https://swapi.booost.bg/api/species/${i}/`);
+        species.on("SPECIES_CREATED", () => this._onSpeciesCreated(species));
+      }
     }
   }
   async init() {
